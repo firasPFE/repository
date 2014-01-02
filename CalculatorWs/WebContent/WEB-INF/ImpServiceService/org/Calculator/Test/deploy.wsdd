@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ImpServiceService WSDL service -->
+
+  <service name="ImpService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Test.Calculator.org"/>
+      <parameter name="wsdlServiceElement" value="ImpServiceService"/>
+      <parameter name="schemaQualified" value="http://Test.Calculator.org"/>
+      <parameter name="wsdlServicePort" value="ImpService"/>
+      <parameter name="className" value="org.Calculator.Test.ImpService"/>
+      <parameter name="wsdlPortType" value="ImpService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://Test.Calculator.org" xmlns:retNS="http://Test.Calculator.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="returnAnything" qname="operNS:returnAnything" returnQName="retNS:returnAnythingReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Test.Calculator.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:param1" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="returnAnything"/>
+
+  </service>
+</deployment>
